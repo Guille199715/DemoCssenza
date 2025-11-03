@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demo Experimental</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Loader -->
+  <div id="loader">Cargando demo...</div>
+
+  <!-- Encabezado -->
+  <header class="encabezado">
+    <h1 class="logo">CSSENZA Demo</h1>
+    <button id="modoToggle">🌙</button>
+  </header>
+
+  <!-- Hero principal -->
+  <section class="hero animar">
+    <h2>Explorando ideas visuales</h2>
+    <p>Animaciones, efectos y UI creativa en acción.</p>
+    <a href="#" class="btn">Ver más</a>
+  </section>
+
+  <!-- Grid de tarjetas -->
+  <section class="grid animar">
+
+    <!-- Scroll Reveal -->
+    <div class="card animar">
+      <h3>Scroll Reveal</h3>
+      <p>Elementos que aparecen al hacer scroll.</p>
+    </div>
+
+    <!-- Modo claro/oscuro -->
+    <div class="card modo-control animar">
+      <h3>Modo Oscuro / Claro</h3>
+      <p>Alterná el estilo visual desde esta tarjeta.</p>
+      <button id="modoToggleCard">🌙 Cambiar modo</button>
+    </div>
+
+    <!-- Hover flotante -->
+    <div class="card animar">
+      <h3>Cards flotantes</h3>
+      <p>Hover con elevación y sombra animada.</p>
+    </div>
+
+    <!-- Parallax GSAP -->
+    <div class="card parallax-gsap animar">
+      <div class="contenido-parallax">
+        <h3>Parallax GSAP</h3>
+        <p>Contenido que se desplaza suavemente al scrollear.</p>
+      </div>
+    </div>
+
+    <!-- Flip Reveal -->
+    <div class="card flip-container animar" onclick="activarFlip(this)">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <h3>Flip Reveal</h3>
+          <p>Animación 3D reversible con contenido frontal.</p>
+        </div>
+        <div class="flip-back">
+          <h3>Contenido oculto</h3>
+          <p>¡Hola desde el otro lado!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contador animado -->
+    <div class="card contador animar">
+      <h3>Contador animado</h3>
+      <p><span id="contador">0</span> proyectos completados</p>
+    </div>
+
+    <!-- Activar modo creativo -->
+    <div class="card accion animar">
+      <h3>Activar modo creativo</h3>
+      <button onclick="activarModo()">Activar</button>
+    </div>
+
+    <!-- Agrupador de contenido -->
+    <div class="card agrupador animar" onclick="toggleAgrupador()">
+      <h3>Agrupador de contenido</h3>
+      <p>Reúne o dispersa todas las tarjetas con un toque.</p>
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Demo creada por Guillermo · CSSENZA STUDIO</p>
+  </footer>
+
+  <!-- Botón flotante WhatsApp -->
+  <a href="https://wa.me/5493410000000" target="_blank" class="boton-wsp">
+    <img src="wsp.svg" alt="WhatsApp" />
+  </a>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
