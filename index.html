@@ -3,104 +3,396 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Demo Experimental</title>
+  <title>CSSENZA LAB | Demo interactiva</title>
+  <meta
+    name="description"
+    content="Demo visual de CSSENZA STUDIO: interacciones, sistemas web, animaciones y prototipos elegantes para marcas digitales."
+  />
+  <meta name="theme-color" content="#00ffe1" />
+  <meta property="og:title" content="CSSENZA LAB | Demo interactiva" />
+  <meta property="og:description" content="Un laboratorio visual de interacciones web, motion y experiencias digitales." />
+  <meta property="og:image" content="og-cssenza.png" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="scroll-progress" data-scroll-progress></div>
 
-  <!-- Loader -->
-  <div id="loader">Cargando demo...</div>
+  <header class="site-header" data-header>
+    <a class="brand" href="#inicio" aria-label="CSSENZA LAB">
+      <span class="brand-mark">CS</span>
+      <span class="brand-copy">
+        <strong>CSSENZA</strong>
+        <small>LAB</small>
+      </span>
+    </a>
 
-  <!-- Encabezado -->
-  <header class="encabezado">
-    <h1 class="logo">CSSENZA Demo</h1>
-    <button id="modoToggle">🌙</button>
+    <nav class="desktop-nav" aria-label="Navegación principal">
+      <a href="#experimentos">Experimentos</a>
+      <a href="#sistema">Sistema</a>
+      <a href="#showcase">Showcase</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-button theme-toggle" type="button" data-theme-toggle aria-label="Cambiar tema">
+        <span aria-hidden="true"></span>
+      </button>
+      <a class="header-cta" href="https://wa.me/5493412473546?text=Hola%20Guillermo%2C%20quiero%20ver%20una%20demo%20web%20para%20mi%20marca." target="_blank" rel="noopener">
+        Hablemos
+      </a>
+      <button class="menu-button" type="button" data-menu-toggle aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
   </header>
 
-  <!-- Hero principal -->
-  <section class="hero animar">
-    <h2>Explorando ideas visuales</h2>
-    <p>Animaciones, efectos y UI creativa en acción.</p>
-    <a href="#" class="btn">Ver más</a>
-  </section>
-
-  <!-- Grid de tarjetas -->
-  <section class="grid animar">
-
-    <!-- Scroll Reveal -->
-    <div class="card animar">
-      <h3>Scroll Reveal</h3>
-      <p>Elementos que aparecen al hacer scroll.</p>
+  <div class="menu-overlay" data-menu-overlay></div>
+  <aside class="mobile-menu" data-mobile-menu aria-label="Menú móvil">
+    <div class="mobile-menu-head">
+      <span>CSSENZA LAB</span>
+      <button class="icon-button close-button" type="button" data-menu-close aria-label="Cerrar menú">
+        <span aria-hidden="true"></span>
+      </button>
     </div>
-
-    <!-- Modo claro/oscuro -->
-    <div class="card modo-control animar">
-      <h3>Modo Oscuro / Claro</h3>
-      <p>Alterná el estilo visual desde esta tarjeta.</p>
-      <button id="modoToggleCard">🌙 Cambiar modo</button>
+    <nav>
+      <a href="#experimentos">Experimentos</a>
+      <a href="#sistema">Sistema</a>
+      <a href="#showcase">Showcase</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="mobile-social">
+      <a href="https://wa.me/5493412473546?text=Hola%20Guillermo%2C%20quiero%20ver%20una%20demo%20web%20para%20mi%20marca." target="_blank" rel="noopener">
+        <img src="whatsapp.svg" alt="" />
+        WhatsApp
+      </a>
+      <a href="https://www.instagram.com/cssenza" target="_blank" rel="noopener">
+        <img src="instagram.svg" alt="" />
+        Instagram
+      </a>
     </div>
+  </aside>
 
-    <!-- Hover flotante -->
-    <div class="card animar">
-      <h3>Cards flotantes</h3>
-      <p>Hover con elevación y sombra animada.</p>
-    </div>
-
-    <!-- Parallax GSAP -->
-    <div class="card parallax-gsap animar">
-      <div class="contenido-parallax">
-        <h3>Parallax GSAP</h3>
-        <p>Contenido que se desplaza suavemente al scrollear.</p>
-      </div>
-    </div>
-
-    <!-- Flip Reveal -->
-    <div class="card flip-container animar" onclick="activarFlip(this)">
-      <div class="flip-inner">
-        <div class="flip-front">
-          <h3>Flip Reveal</h3>
-          <p>Animación 3D reversible con contenido frontal.</p>
+  <main id="inicio">
+    <section class="hero">
+      <div class="hero-backdrop" aria-hidden="true"></div>
+      <div class="hero-inner section-shell">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Demo experimental de CSSENZA</p>
+          <h1>Interacciones web con presencia de marca.</h1>
+          <p class="hero-lead">
+            Un laboratorio visual para probar motion, estructura, microinteracciones y componentes listos para convertirse en una web real.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#experimentos">Explorar demo</a>
+            <a class="btn btn-secondary" href="#sistema">Ver sistema</a>
+          </div>
+          <div class="hero-tags" aria-label="Capas de trabajo">
+            <span>Motion</span>
+            <span>Responsive</span>
+            <span>UI premium</span>
+          </div>
         </div>
-        <div class="flip-back">
-          <h3>Contenido oculto</h3>
-          <p>¡Hola desde el otro lado!</p>
+
+        <div class="hero-stage reveal" data-tilt-card>
+          <div class="stage-toolbar">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="stage-grid">
+            <div class="stage-line wide"></div>
+            <div class="stage-line"></div>
+            <div class="stage-line short"></div>
+            <div class="stage-window">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="stage-meter">
+              <strong data-count="96">0</strong>
+              <small>Performance visual</small>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+      <a class="scroll-cue" href="#experimentos" aria-label="Bajar a experimentos">
+        <span></span>
+      </a>
+    </section>
 
-    <!-- Contador animado -->
-    <div class="card contador animar">
-      <h3>Contador animado</h3>
-      <p><span id="contador">0</span> proyectos completados</p>
-    </div>
+    <section class="signal-strip" aria-label="Indicadores de la demo">
+      <div class="section-shell signal-grid">
+        <article class="signal-item reveal">
+          <strong>01</strong>
+          <span>Lenguaje visual consistente con CSSENZA STUDIO.</span>
+        </article>
+        <article class="signal-item reveal">
+          <strong>02</strong>
+          <span>Componentes interactivos sin librerías externas.</span>
+        </article>
+        <article class="signal-item reveal">
+          <strong>03</strong>
+          <span>Base responsive preparada para crecer.</span>
+        </article>
+      </div>
+    </section>
 
-    <!-- Activar modo creativo -->
-    <div class="card accion animar">
-      <h3>Activar modo creativo</h3>
-      <button onclick="activarModo()">Activar</button>
-    </div>
+    <section id="experimentos" class="section-block">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Experimentos principales</p>
+        <h2>La demo ahora se siente como una pieza de portfolio.</h2>
+      </div>
 
-    <!-- Agrupador de contenido -->
-    <div class="card agrupador animar" onclick="toggleAgrupador()">
-      <h3>Agrupador de contenido</h3>
-      <p>Reúne o dispersa todas las tarjetas con un toque.</p>
-    </div>
+      <div class="experiment-grid">
+        <article class="experiment-card reveal" data-tilt-card>
+          <span class="card-index">01</span>
+          <h3>Reveal elegante</h3>
+          <p>Entradas suaves por scroll, pensadas para marcar ritmo sin cargar la experiencia.</p>
+        </article>
+        <article class="experiment-card reveal" data-tilt-card>
+          <span class="card-index">02</span>
+          <h3>Hover magnético</h3>
+          <p>Botones y superficies responden al cursor con una sensación más táctil.</p>
+        </article>
+        <article class="experiment-card reveal interactive-card" data-expand-card>
+          <span class="card-index">03</span>
+          <h3>Card expandible</h3>
+          <p>Una tarjeta puede abrir una capa de detalle sin romper el layout.</p>
+          <div class="card-extra">
+            <span>Ideal para servicios, fichas, beneficios o productos destacados.</span>
+          </div>
+        </article>
+        <article class="experiment-card reveal" data-tilt-card>
+          <span class="card-index">04</span>
+          <h3>Tema adaptable</h3>
+          <p>Modo oscuro y claro con persistencia local y contraste cuidado.</p>
+        </article>
+        <article class="experiment-card reveal metric-card">
+          <span class="card-index">05</span>
+          <h3>Contadores vivos</h3>
+          <p><strong data-count="12">0</strong> módulos listos para mezclar en sitios reales.</p>
+        </article>
+        <article class="experiment-card reveal action-card">
+          <span class="card-index">06</span>
+          <h3>Modo enfoque</h3>
+          <button class="btn btn-primary" type="button" data-focus-mode>Activar enfoque</button>
+        </article>
+      </div>
+    </section>
 
-  </section>
+    <section id="sistema" class="section-block system-section">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Sistema interactivo</p>
+        <h2>Un panel para probar direcciones visuales sin cambiar de página.</h2>
+      </div>
 
-  <!-- Footer -->
-  <footer>
-    <p>Demo creada por Guillermo · CSSENZA STUDIO</p>
+      <div class="system-layout">
+        <div class="control-panel reveal">
+          <div class="option-tabs" role="tablist" aria-label="Direcciones de demo">
+            <button class="active" type="button" data-panel-target="landing" role="tab" aria-selected="true">Landing</button>
+            <button type="button" data-panel-target="catalogo" role="tab" aria-selected="false">Catálogo</button>
+            <button type="button" data-panel-target="portfolio" role="tab" aria-selected="false">Portfolio</button>
+          </div>
+
+          <div class="panel-copy active" data-panel="landing" role="tabpanel">
+            <p class="option-label">Conversión clara</p>
+            <h3>Landing con ritmo comercial</h3>
+            <p>Hero fuerte, beneficios escaneables, pruebas visuales y contacto siempre a mano.</p>
+          </div>
+          <div class="panel-copy" data-panel="catalogo" role="tabpanel" hidden>
+            <p class="option-label">Producto y orden</p>
+            <h3>Catálogo visual premium</h3>
+            <p>Grillas, fichas, filtros simples y llamados directos para pedir presupuesto.</p>
+          </div>
+          <div class="panel-copy" data-panel="portfolio" role="tabpanel" hidden>
+            <p class="option-label">Marca personal</p>
+            <h3>Portfolio con identidad</h3>
+            <p>Trabajos, historia, servicios y presencia profesional en una narrativa clara.</p>
+          </div>
+
+          <div class="range-control">
+            <label for="intensityRange">Intensidad visual</label>
+            <input id="intensityRange" type="range" min="0" max="100" value="64" data-intensity-range />
+          </div>
+
+          <div class="mode-buttons" aria-label="Capas visuales">
+            <button class="chip-button active" type="button" data-preview-mode="flow">Flow</button>
+            <button class="chip-button" type="button" data-preview-mode="grid">Grid</button>
+            <button class="chip-button" type="button" data-preview-mode="commerce">Venta</button>
+          </div>
+        </div>
+
+        <div class="preview-panel reveal" data-preview-panel>
+          <div class="preview-shell">
+            <div class="preview-nav">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="preview-hero">
+              <span class="preview-kicker"></span>
+              <span class="preview-title"></span>
+              <span class="preview-text"></span>
+              <span class="preview-button"></span>
+            </div>
+            <div class="preview-cards">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="showcase" class="section-block showcase-section">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Showcase</p>
+        <h2>Bloques visuales listos para convertirse en secciones reales.</h2>
+      </div>
+
+      <div class="showcase-grid">
+        <article class="showcase-card reveal">
+          <div class="showcase-visual visual-a" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="showcase-content">
+            <p>Hero</p>
+            <h3>Primera impresión</h3>
+            <span>Marca visible, mensaje directo y acción principal clara.</span>
+          </div>
+        </article>
+        <article class="showcase-card reveal">
+          <div class="showcase-visual visual-b" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="showcase-content">
+            <p>Servicios</p>
+            <h3>Oferta ordenada</h3>
+            <span>Cards con jerarquía, detalle suficiente y lectura rápida.</span>
+          </div>
+        </article>
+        <article class="showcase-card reveal">
+          <div class="showcase-visual visual-c" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="showcase-content">
+            <p>Contacto</p>
+            <h3>Conversión simple</h3>
+            <span>WhatsApp, Instagram y CTA presentes sin invadir.</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="quote-band reveal">
+      <div class="section-shell quote-inner">
+        <p>No alcanza con que una web se mueva. Tiene que moverse con intención.</p>
+        <a class="btn btn-primary" href="https://wa.me/5493412473546?text=Hola%20Guillermo%2C%20quiero%20una%20web%20con%20este%20estilo%20visual." target="_blank" rel="noopener">
+          Usar este estilo
+        </a>
+      </div>
+    </section>
+
+    <section id="proceso" class="section-block process-section">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Proceso</p>
+        <h2>De demo a sitio real, con una base mas pulida.</h2>
+      </div>
+
+      <div class="timeline" data-timeline>
+        <article class="step reveal">
+          <span>01</span>
+          <h3>Dirección</h3>
+          <p>Definimos tono, público, prioridad visual y mensaje principal.</p>
+        </article>
+        <article class="step reveal">
+          <span>02</span>
+          <h3>Sistema</h3>
+          <p>Armamos colores, componentes, grillas, estados y responsive.</p>
+        </article>
+        <article class="step reveal">
+          <span>03</span>
+          <h3>Interacción</h3>
+          <p>Sumamos movimiento, feedback, navegación y puntos de contacto.</p>
+        </article>
+        <article class="step reveal">
+          <span>04</span>
+          <h3>Publicación</h3>
+          <p>Optimizamos detalles y dejamos la web preparada para compartir.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-block faq-section">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Notas rápidas</p>
+        <h2>La demo queda preparada para seguir iterando.</h2>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq-item reveal">
+          <summary>¿Se puede transformar en landing comercial?</summary>
+          <p>Sí. La estructura ya tiene hero, beneficios, showcase, proceso y contacto.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>¿Funciona sin librerías externas?</summary>
+          <p>Sí. Las interacciones principales están hechas con JavaScript propio.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>¿Queda bien en celular?</summary>
+          <p>Sí. El layout cambia de grillas amplias a bloques táctiles y legibles.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="contacto" class="contact-section">
+      <div class="section-shell contact-layout">
+        <div class="contact-copy reveal">
+          <p class="eyebrow">Contacto</p>
+          <h2>Si te gusta esta línea, la convertimos en una web completa.</h2>
+          <p>La demo ya tiene una identidad mas fuerte, componentes reutilizables y una experiencia mas cuidada para presentar CSSENZA.</p>
+        </div>
+        <div class="contact-actions reveal">
+          <a class="contact-link" href="https://wa.me/5493412473546?text=Hola%20Guillermo%2C%20quiero%20consultar%20por%20una%20web%20con%20el%20estilo%20de%20la%20demo." target="_blank" rel="noopener">
+            <img src="whatsapp.svg" alt="" />
+            <span>
+              <strong>WhatsApp</strong>
+              <small>Consulta directa</small>
+            </span>
+          </a>
+          <a class="contact-link" href="https://www.instagram.com/cssenza" target="_blank" rel="noopener">
+            <img src="instagram.svg" alt="" />
+            <span>
+              <strong>Instagram</strong>
+              <small>@cssenza</small>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>CSSENZA LAB · Demo interactiva · Rosario, Argentina</p>
+    <a href="#inicio">Volver arriba</a>
   </footer>
 
-  <!-- Botón flotante WhatsApp -->
-  <a href="https://wa.me/5493410000000" target="_blank" class="boton-wsp">
-    <img src="wsp.svg" alt="WhatsApp" />
-  </a>
+  <button class="back-top" type="button" data-back-top aria-label="Volver arriba">
+    <span aria-hidden="true"></span>
+  </button>
 
-  <!-- Scripts -->
-  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
-  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
