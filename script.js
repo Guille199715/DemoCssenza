@@ -24,6 +24,13 @@ const faqItems = document.querySelectorAll(".faq-item");
 const magneticItems = document.querySelectorAll(".btn, .header-cta, .icon-button, .contact-link, .back-top");
 const tiltCards = document.querySelectorAll("[data-tilt-card]");
 const internalLinks = document.querySelectorAll('a[href^="#"]');
+const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+const compactMotionQuery = window.matchMedia("(max-width: 760px)");
+const lightMotion = reducedMotionQuery.matches || compactMotionQuery.matches || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
+
+if (lightMotion) {
+  body.classList.add("light-motion");
+}
 
 const savedTheme = localStorage.getItem("cssenza-demo-theme");
 if (savedTheme === "light") {
@@ -53,11 +60,14 @@ function updateScrollState() {
   const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
   const amount = maxScroll > 0 ? window.scrollY / maxScroll : 0;
 
-  if (progress) progress.style.width = `${amount * 100}%`;
+  if (progress) progress.style.transform = `scaleX(${amount})`;
   if (header) header.classList.toggle("scrolled", window.scrollY > 24);
   if (backTop) backTop.classList.toggle("visible", window.scrollY > 520);
 
-  body.style.setProperty("--hero-shift", `${Math.min(window.scrollY * -0.06, 0)}px`);
+  if (!lightMotion) {
+    body.style.setProperty("--hero-shift", `${Math.min(window.scrollY * -0.06, 0)}px`);
+  }
+
   updateActiveNav();
   updateProcessLine();
 }
@@ -81,6 +91,11 @@ function updateActiveNav() {
 
 function updateProcessLine() {
   if (!timeline) return;
+  if (lightMotion) {
+    timeline.style.setProperty("--process-progress", "100%");
+    steps.forEach((step) => step.classList.add("process-lit"));
+    return;
+  }
 
   const rect = timeline.getBoundingClientRect();
   const raw = (window.innerHeight * 0.72 - rect.top) / Math.max(rect.height, 1);
@@ -102,7 +117,7 @@ function scrollToTarget(hash, behavior = "smooth") {
     ? 0
     : target.getBoundingClientRect().top + window.scrollY - headerOffset;
 
-  window.scrollTo({ top: Math.max(top, 0), behavior });
+  window.scrollTo({ top: Math.max(top, 0), behavior: lightMotion ? "auto" : behavior });
 }
 
 function selectPanel(panelName) {
@@ -124,6 +139,11 @@ function animateCount(item) {
   item.dataset.counted = "true";
 
   const target = Number(item.dataset.count || 0);
+  if (lightMotion) {
+    item.textContent = String(target);
+    return;
+  }
+
   const duration = 1100;
   const start = performance.now();
 
@@ -227,7 +247,7 @@ faqItems.forEach((item) => {
   });
 });
 
-if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+if (!lightMotion && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
   document.addEventListener("pointermove", (event) => {
     body.style.setProperty("--cursor-x", `${event.clientX}px`);
     body.style.setProperty("--cursor-y", `${event.clientY}px`);
@@ -294,10 +314,21 @@ document.addEventListener("keydown", (event) => {
 });
 
 backTop?.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  window.scrollTo({ top: 0, behavior: lightMotion ? "auto" : "smooth" });
 });
 
-window.addEventListener("scroll", updateScrollState, { passive: true });
+let scrollTicking = false;
+function requestScrollStateUpdate() {
+  if (scrollTicking) return;
+
+  scrollTicking = true;
+  requestAnimationFrame(() => {
+    updateScrollState();
+    scrollTicking = false;
+  });
+}
+
+window.addEventListener("scroll", requestScrollStateUpdate, { passive: true });
 window.addEventListener("resize", updateScrollState);
 
 updateScrollState();

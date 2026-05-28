@@ -92,6 +92,48 @@ body.focus-mode .site-footer {
   filter: saturate(0.5);
 }
 
+body.light-motion::before {
+  transform: none;
+  transition: none;
+}
+
+body.light-motion .stage-line,
+body.light-motion .preview-kicker,
+body.light-motion .preview-title,
+body.light-motion .preview-text,
+body.light-motion .preview-button,
+body.light-motion .scroll-cue span {
+  animation: none;
+}
+
+body.light-motion .reveal {
+  opacity: 0;
+  filter: none;
+  transform: translateY(12px);
+  transition: opacity 220ms ease, transform 220ms ease;
+  transition-delay: 0ms !important;
+  will-change: auto;
+}
+
+body.light-motion .reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+body.light-motion .showcase-visual::before,
+body.light-motion .showcase-visual span,
+body.light-motion .section-block::before,
+body.light-motion .contact-section::before,
+body.light-motion .faq-item::before {
+  transition-duration: 180ms;
+}
+
+body.light-motion.focus-mode main > section:not(.hero):not(#experimentos),
+body.light-motion.focus-mode .signal-strip,
+body.light-motion.focus-mode .site-footer {
+  filter: none;
+}
+
 body.menu-open {
   overflow: hidden;
 }
@@ -129,9 +171,12 @@ button {
   top: 0;
   left: 0;
   z-index: 2000;
-  width: 0%;
+  width: 100%;
   height: 3px;
   background: linear-gradient(90deg, var(--accent), var(--warm), var(--accent-2));
+  transform: scaleX(0);
+  transform-origin: left;
+  will-change: transform;
 }
 
 .site-header {
@@ -422,6 +467,13 @@ body.modo-claro .theme-toggle span::after {
   min-height: calc(100vh - 250px);
 }
 
+.hero-copy,
+.hero-stage,
+.system-layout > *,
+.contact-layout > * {
+  min-width: 0;
+}
+
 .eyebrow {
   margin: 0 0 14px;
   color: var(--accent);
@@ -450,6 +502,7 @@ h1 {
   margin-bottom: 24px;
   font-size: clamp(3.25rem, 6.5vw, 5.75rem);
   font-weight: 950;
+  overflow-wrap: normal;
 }
 
 .hero-lead {
@@ -1586,6 +1639,49 @@ body.modo-claro .showcase-section {
 }
 
 @media (max-width: 680px) {
+  body::before {
+    position: absolute;
+    height: 760px;
+    bottom: auto;
+    transform: none;
+    transition: none;
+  }
+
+  .site-header,
+  .hero-stage,
+  .signal-item,
+  .experiment-card,
+  .control-panel,
+  .preview-panel,
+  .quote-inner,
+  .contact-link,
+  .mobile-menu {
+    backdrop-filter: none;
+  }
+
+  .stage-line,
+  .preview-kicker,
+  .preview-title,
+  .preview-text,
+  .preview-button,
+  .scroll-cue span {
+    animation: none;
+  }
+
+  .reveal {
+    filter: none;
+    transform: translateY(12px);
+    transition: opacity 220ms ease, transform 220ms ease;
+    transition-delay: 0ms !important;
+    will-change: auto;
+  }
+
+  .showcase-visual::before,
+  .showcase-visual span {
+    transform: none;
+    transition-duration: 180ms;
+  }
+
   .site-header {
     top: 10px;
     width: calc(100% - 20px);
@@ -1618,8 +1714,9 @@ body.modo-claro .showcase-section {
   }
 
   h1 {
-    max-width: 10ch;
-    font-size: clamp(3.15rem, 17vw, 4.8rem);
+    max-width: 100%;
+    font-size: clamp(2.55rem, 11vw, 3.25rem);
+    line-height: 1.08;
   }
 
   .hero-lead {
@@ -1736,7 +1833,7 @@ body.modo-claro .showcase-section {
   }
 
   h1 {
-    font-size: 2.92rem;
+    font-size: 2.45rem;
   }
 
   .section-heading h2,
